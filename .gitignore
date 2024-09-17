@@ -25,3 +25,6 @@ dist-ssr
 
 2024.md
 user-data.txt
+
+tsconfig.app.tsbuildinfo
+tsconfig.node.tsbuildinfo

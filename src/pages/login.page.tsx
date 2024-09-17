@@ -1,16 +1,6 @@
 import { useForm, zodResolver } from '@mantine/form';
-import {
-  Button,
-  Center,
-  Container,
-  Image,
-  PasswordInput,
-  Stack,
-  TextInput,
-  Title,
-} from '@mantine/core';
+import { Button, Center, Container, PasswordInput, Stack, TextInput, Title } from '@mantine/core';
 import { loginDto, LoginDto } from '../dtos/auth.dto';
-import { assets } from '../assets';
 import { useLogin } from '../api/mutations/auth.mutations';
 import { primaryColor } from '../app';
 
@@ -36,7 +26,6 @@ export default function LoginPage() {
             <Title c={primaryColor} fz={60} ta='center'>
               Hesabınıza Daxil Olun
             </Title>
-            <Image mb={25} mx='auto' src={assets.icons.awardsTextColored} w={120} />
             <TextInput
               label='İstifadəçi adı'
               placeholder='Sizə verilən adı daxil edin'
