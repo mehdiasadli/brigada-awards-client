@@ -9,7 +9,7 @@ import ProfilePage from '../pages/profile.page';
 
 import DashboardStatsPage from '../pages/dashboard-stats.page';
 import DashboardUsersPage from '../pages/dashboard-users.page';
-import DashboardCommentsPage from '../pages/dashboard-comments.page';
+// import DashboardCommentsPage from '../pages/dashboard-comments.page';
 import DashboardAwardsPage from '../pages/dashboard-awards.page';
 import VotePage from '../pages/vote.page';
 import VoteCategoryPage from '../pages/vote-category.page';
@@ -43,7 +43,7 @@ export default function Navigation() {
           <Route path='users' element={<DashboardUsersPage />} />
           <Route path='awards' element={<DashboardAwardsPage />} />
           <Route path='contests/:id' element={<DashboardContestLayout />} />
-          <Route path='comments' element={<DashboardCommentsPage />} />
+          {/* <Route path='comments' element={<DashboardCommentsPage />} /> */}
         </Route>
       </Route>
     </Routes>
