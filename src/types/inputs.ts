@@ -1,6 +1,7 @@
 import { LoginDto } from '../dtos/auth.dto';
 import { CreateAwardDto, UpdateAwardDto } from '../dtos/award.dto';
 import { AddCategoryDto, GetCategoriesDto } from '../dtos/category.dto';
+import { CreateCommentDto, GetCommentsQueryDto } from '../dtos/comment.dto';
 import { CreateContestDto, GetContestsFiltersDto, UpdateContestDto } from '../dtos/contest.dto';
 import { AddNomineeDto, GetNomineesDto } from '../dtos/nominee.dto';
 import { AddParticipantDto, GetParticipantsDto } from '../dtos/participant.dto';
@@ -33,11 +34,11 @@ export type TDeleteCategoryInput = Id;
 export type TCreateCategoryInput = AddCategoryDto;
 
 // COMMENTS
-export type TGetCommentsInput = { query: InputQuery };
+export type TGetCommentsInput = { query: InputQuery & GetCommentsQueryDto };
 export type TGetCommentInput = Id;
 export type TUpdateCommentInput = Id & { data: unknown };
 export type TDeleteCommentInput = Id;
-export type TCreateCommentInput = unknown;
+export type TCreateCommentInput = CreateCommentDto;
 
 // CONTESTS
 export type TGetContestsInput = { query: InputQuery & GetContestsFiltersDto };
@@ -47,7 +48,7 @@ export type TDeleteContestInput = Id;
 export type TCreateContestInput = CreateContestDto;
 
 // VOTES
-export type TGetVotesInput = { contestId: string, query: InputQuery & GetVotesQueryDto };
+export type TGetVotesInput = { contestId: string; query: InputQuery & GetVotesQueryDto };
 export type TGetVotesOfParticipantInput = Id;
 export type TGetVoteInput = Id;
 export type TDeleteVoteInput = DeleteVotesDto;
