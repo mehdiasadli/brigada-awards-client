@@ -86,13 +86,13 @@ export default function CategoryCard({
         <Title order={6} ta='center'>
           {category.award.name}
         </Title>
-        {!isModal && (
+        {/* {!isModal && (
           <Flex gap={10} justify='center'>
             <Anchor component={Link} to={'/comments/' + category.id}>
               Kommentlər
             </Anchor>
           </Flex>
-        )}
+        )} */}
       </Stack>
       <DashboardCardInfo
         count={category.nominees.length}
