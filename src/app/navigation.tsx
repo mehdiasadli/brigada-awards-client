@@ -18,6 +18,7 @@ import ContestsPage from '../pages/contests-page';
 import ContestPage from '../pages/contest-page';
 import AwardsPage from '../pages/awards-page';
 import CommentsPage from '../pages/comments-page';
+import LogsPage from '../pages/logs.page';
 
 export default function Navigation() {
   const { token, admin } = useAuth();
@@ -41,6 +42,7 @@ export default function Navigation() {
         >
           <Route index element={<DashboardStatsPage />} />
           <Route path='users' element={<DashboardUsersPage />} />
+          <Route path='logs' element={<LogsPage />} />
           <Route path='awards' element={<DashboardAwardsPage />} />
           <Route path='contests/:id' element={<DashboardContestLayout />} />
           <Route path='comments' element={<DashboardCommentsPage />} />

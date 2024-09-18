@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "pregit": "npm run lint",
+    "git": "git add . && git commit -m",
+    "postgit": "git push origin main"
   },
   "dependencies": {
     "@emotion/cache": "^11.13.1",

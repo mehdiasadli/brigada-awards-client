@@ -6,10 +6,12 @@ import {
   TCategory,
   TComment,
   TContest,
+  TLog,
   TNominee,
   TParticipant,
   TUser,
   TVote,
+  VoteStats,
 } from './models';
 import { Id, SuccessResponse } from './server';
 
@@ -26,6 +28,7 @@ export type TGetUserResponse = SuccessResponse<
   } & {
     _count: { participations: number };
     givenTotals: { total: number; user: TUser }[];
+    stats: VoteStats;
     ranks: {
       contest: ContestInfo;
       category: CategoryInfo;
@@ -120,3 +123,6 @@ export type TGetUserResultsResponse = SuccessResponse<
     rank: number;
   }[]
 >;
+
+// LOGS
+export type TGetLogsResponse = SuccessResponse<TLog, true>;

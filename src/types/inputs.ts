@@ -3,6 +3,7 @@ import { CreateAwardDto, UpdateAwardDto } from '../dtos/award.dto';
 import { AddCategoryDto, GetCategoriesDto } from '../dtos/category.dto';
 import { CreateCommentDto, GetCommentsQueryDto } from '../dtos/comment.dto';
 import { CreateContestDto, GetContestsFiltersDto, UpdateContestDto } from '../dtos/contest.dto';
+import { GetLogsDto } from '../dtos/log.dto';
 import { AddNomineeDto, GetNomineesDto } from '../dtos/nominee.dto';
 import { AddParticipantDto, GetParticipantsDto } from '../dtos/participant.dto';
 import { CreateUserDto, UpdateUserDto } from '../dtos/user.dto';
@@ -74,3 +75,6 @@ export type TGetAwardResultsInput = Id;
 export type TGetParticipantResultsInput = Id;
 export type TGetContestResultsInput = Id;
 export type TGetUserResultsInput = Id;
+
+// LOGS
+export type TGetLogsInput = { query: InputQuery & GetLogsDto };

@@ -1,4 +1,5 @@
 import { GetCommentsQueryDto } from '../../dtos/comment.dto';
+import { GetLogsDto } from '../../dtos/log.dto';
 import { GetNomineesDto } from '../../dtos/nominee.dto';
 import { InputQueryWithoutPage } from '../../types/query';
 
@@ -36,7 +37,8 @@ export const commentKeys = {
   index: ['comments'] as const,
 
   list: () => [...commentKeys.index, 'list'] as const,
-  listWithQuery: (query: InputQueryWithoutPage & GetCommentsQueryDto) => [...commentKeys.list(), query] as const,
+  listWithQuery: (query: InputQueryWithoutPage & GetCommentsQueryDto) =>
+    [...commentKeys.list(), query] as const,
   single: () => [...commentKeys.index, 'single'] as const,
   singleWithId: (id: string) => [...commentKeys.single(), id] as const,
 };
@@ -92,4 +94,10 @@ export const resultKeys = {
   byUser: (id: string) => [...resultKeys.index, 'by-user', id] as const,
   byAward: (id: string) => [...resultKeys.index, 'by-award', id] as const,
   byCategory: (id: string) => [...resultKeys.index, 'by-category', id] as const,
+};
+
+export const logKeys = {
+  index: ['logs'] as const,
+
+  withQuery: (query: InputQueryWithoutPage & GetLogsDto) => [...logKeys.index, query] as const,
 };

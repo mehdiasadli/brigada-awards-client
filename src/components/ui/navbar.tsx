@@ -98,6 +98,11 @@ export default function Navbar() {
         />
 
         <div className={classes.section}>
+          <Group className={classes.collectionsHeader} justify='space-between'>
+            <Text size='xs' fw={500} c='dimmed'>
+              Awards
+            </Text>
+          </Group>
           <div className={classes.mainLinks}>{mainLinks}</div>
         </div>
 
@@ -105,7 +110,7 @@ export default function Navbar() {
           <div className={classes.section}>
             <Group className={classes.collectionsHeader} justify='space-between'>
               <Text size='xs' fw={500} c='dimmed'>
-                Panel
+                Admin Panel
               </Text>
             </Group>
             <div className={classes.collections}>{collectionLinks}</div>
@@ -119,7 +124,7 @@ export default function Navbar() {
             <div className={classes.section}>
               <Group className={classes.collectionsHeader} justify='space-between'>
                 <Text size='xs' fw={500} c='dimmed'>
-                  Müsabiqələr
+                  Müsabiqələr (Admin)
                 </Text>
               </Group>
               <div className={classes.collections}>

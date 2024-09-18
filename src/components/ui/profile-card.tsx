@@ -1,4 +1,15 @@
-import { ActionIcon, Flex, List, Paper, Popover, Space, Stack, Text } from '@mantine/core';
+import {
+  ActionIcon,
+  Flex,
+  List,
+  Mark,
+  Paper,
+  Popover,
+  Space,
+  Stack,
+  Text,
+  ThemeIcon,
+} from '@mantine/core';
 import { TGetUserResponse } from '../../types/responses';
 import UserAvatar from './user-avatar';
 import dayjs from 'dayjs';
@@ -6,6 +17,7 @@ import { CategoryInfo, ContestInfo } from '../../types/models';
 import { rankColors } from '../../resources/constants';
 import Medal from './Medal';
 import { formatNumber } from '../../utils/format-number';
+import { IconInfoCircle } from '@tabler/icons-react';
 
 interface ProfileCardProps {
   user: TGetUserResponse['body'];
@@ -67,6 +79,8 @@ export default function ProfileCard({ user }: ProfileCardProps) {
     0
   );
 
+  console.log(user.stats);
+
   return (
     <Paper
       w='min(100%, 40rem)'
@@ -121,33 +135,50 @@ export default function ProfileCard({ user }: ProfileCardProps) {
       <Space h={15} />
       {counts.participation === 0 || counts.nominations === 0 ? null : (
         <Stack>
-          <List>
+          <List
+            center
+            spacing='xs'
+            icon={
+              <ThemeIcon variant='transparent' size='sm' color='gray.5'>
+                <IconInfoCircle />
+              </ThemeIcon>
+            }
+          >
             <List.Item>
               <Text c='dimmed'>
-                Hər iştiraka görə ortalama {formatNumber(counts.nominations / counts.participation)}{' '}
-                nominasiya
+                Hər iştiraka görə ortalama{' '}
+                <Mark>{formatNumber(counts.nominations / counts.participation)}</Mark> nominasiya
               </Text>
             </List.Item>
             <List.Item>
               <Text c='dimmed'>
-                Hər nominasiyaya görə ortalama {formatNumber(counts.wins / counts.nominations)}{' '}
-                qalibiyyət
+                Hər nominasiyaya görə ortalama{' '}
+                <Mark>{formatNumber(counts.wins / counts.nominations)}</Mark> qalibiyyət
               </Text>
             </List.Item>
             <List.Item>
               <Text c='dimmed'>
-                Hər iştiraka görə ortalama {formatNumber(counts.wins / counts.participation)}{' '}
-                qalibiyyət
+                Hər iştiraka görə ortalama{' '}
+                <Mark>{formatNumber(counts.wins / counts.participation)}</Mark> qalibiyyət
               </Text>
             </List.Item>
+            <List.Item>
+              <Text c='dimmed'>
+                <Mark>{totalPoints}</Mark> ümumi medal xalı
+              </Text>
+            </List.Item>
+            {user.stats && (
+              <>
+                <List.Item>
+                  <Text c='dimmed'>
+                    Ümumi verdiyi xalların cəmi - <Mark>{user.stats.totalPoints}</Mark>
+                  </Text>
+                </List.Item>
+              </>
+            )}
           </List>
         </Stack>
       )}
-
-      <Space h={15} />
-      <Text ta='center' fw='bold'>
-        {totalPoints} ümumi medal xalı
-      </Text>
     </Paper>
   );
 }

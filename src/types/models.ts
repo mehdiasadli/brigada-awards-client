@@ -29,7 +29,7 @@ export type TParticipant = Prisma & {
   contestId: string;
   user: TUser;
   contest: TContest;
-  allowEarlyVote?: boolean
+  allowEarlyVote?: boolean;
 
   nominations: TNominee[];
   votes: TVote[];
@@ -92,6 +92,15 @@ export type TComment = Prisma & {
   content: string;
 };
 
+export type TLog = Prisma & {
+  method: string;
+  path: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  body: any;
+  userId?: string;
+  username?: string;
+};
+
 export type TAward = Prisma & {
   name: string;
   description?: string;
@@ -106,7 +115,7 @@ export type RankedNominee = {
   totalPoints: number;
   rank: number;
   votes: number;
-  voters: TVote[];  
+  voters: TVote[];
   participant: {
     id: string;
     user: {
@@ -133,3 +142,19 @@ export type ContestInfo = {
   name: string;
   year: number;
 };
+
+export type VoteStats = {
+  mean: number;
+  median: number;
+  mode: number;
+  variance: number;
+  standardDeviation: number;
+  range: number;
+  interquartileRange: number;
+  skewness: number;
+  kurtosis: number;
+  giniCoefficient: number;
+  herfindahlIndex: number;
+  totalPoints: number;
+  numberOfRecipients: number;
+} | null;
