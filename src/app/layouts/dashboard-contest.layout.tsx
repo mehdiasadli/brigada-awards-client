@@ -42,8 +42,6 @@ export default function DashboardContestLayout() {
     setActiveTab(params.get('tab') || 'overall');
   }, [params]);
 
-  console.log(data?.body?.participants.map((p) => ({ id: p.id, name: p.user.name })));
-
   return (
     Component ??
     (data?.body && (

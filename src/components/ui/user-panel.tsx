@@ -12,6 +12,7 @@ import { TUser } from '../../types/models';
 import UserAvatar from './user-avatar';
 import { useUser } from '../../hooks/useUser';
 import { IconCrown } from '@tabler/icons-react';
+import { Link } from 'react-router-dom';
 
 export interface UserPanelProps extends GroupProps {
   user?: TUser;
@@ -25,6 +26,7 @@ export interface UserPanelProps extends GroupProps {
   withCrown?: boolean;
   titleDescription?: React.ReactNode;
   withFirstName?: boolean;
+  link?: boolean | string;
 }
 
 export default function UserPanel({
@@ -39,6 +41,7 @@ export default function UserPanel({
   withCrown = true,
   titleDescription,
   withFirstName = false,
+  link,
   ...props
 }: UserPanelProps) {
   const currentUser = useUser();
@@ -48,7 +51,15 @@ export default function UserPanel({
   } = useMantineTheme();
 
   return (
-    <Group gap={10} {...props}>
+    <Group
+      gap={10}
+      {...props}
+      renderRoot={
+        !link
+          ? undefined
+          : (p) => <Link to={link === true ? '/users/' + selectedUser.username : link} {...p} />
+      }
+    >
       <UserAvatar user={selectedUser} {...avatarProps} />
       <Stack gap={0} {...stackProps}>
         <Group align='center' gap={8}>

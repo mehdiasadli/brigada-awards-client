@@ -25,6 +25,7 @@ export type TGetUserResponse = SuccessResponse<
     })[];
   } & {
     _count: { participations: number };
+    givenTotals: { total: number; user: TUser }[];
     ranks: {
       contest: ContestInfo;
       category: CategoryInfo;

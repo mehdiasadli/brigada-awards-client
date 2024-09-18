@@ -28,3 +28,5 @@ user-data.txt
 
 tsconfig.app.tsbuildinfo
 tsconfig.node.tsbuildinfo
+
+.VSCodeCounter

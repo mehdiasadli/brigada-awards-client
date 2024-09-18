@@ -62,6 +62,11 @@ export default function ProfileCard({ user }: ProfileCardProps) {
     wins: user.ranks.filter((r) => r.rank === 1).length,
   };
 
+  const totalPoints = user.ranks.reduce(
+    (r, { rank }) => (rank === 1 ? r + 4 : rank === 2 ? r + 2 : rank === 3 ? r + 1 : r),
+    0
+  );
+
   return (
     <Paper
       w='min(100%, 40rem)'
@@ -138,6 +143,11 @@ export default function ProfileCard({ user }: ProfileCardProps) {
           </List>
         </Stack>
       )}
+
+      <Space h={15} />
+      <Text ta='center' fw='bold'>
+        {totalPoints} ümumi medal xalı
+      </Text>
     </Paper>
   );
 }
