@@ -139,7 +139,7 @@ export default function Navbar() {
                     modal.openCreateContest({});
                   }}
                 >
-                  Create New Contest
+                  Yeni Müsabiqə Yarat
                 </Anchor>
               </div>
             </div>
