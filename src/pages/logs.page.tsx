@@ -10,6 +10,7 @@ import { Badge } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import { useDeleteLogs } from '../api/mutations/log.mutations';
 import { IconTrash } from '@tabler/icons-react';
+import dayjs from 'dayjs';
 
 const methods = ['POST', 'DELETE', 'PUT'];
 const methodColors = {
@@ -92,7 +93,12 @@ export default function LogsPage() {
                       <Popover.Dropdown>{JSON.stringify(item.body, null, 2)}</Popover.Dropdown>
                     </Popover>
                   </Flex>
-                  <Text fw='bold'>{item.path}</Text>
+                  <Flex align='center' justify='space-between' gap={10}>
+                    <Text fw='bold'>{item.path}</Text>
+                    <Text c='dimmed' fz='xs'>
+                      {dayjs(item.createdAt).format('HH:mm:ss, DD.MM.YYYY')}
+                    </Text>
+                  </Flex>
                   {item.userId && item.username && (
                     <Flex align='center' justify='space-between'>
                       <Anchor component={Link} to={'/users/' + item.username} fz={'lg'}>
