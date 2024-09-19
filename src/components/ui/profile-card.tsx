@@ -79,8 +79,6 @@ export default function ProfileCard({ user }: ProfileCardProps) {
     0
   );
 
-  console.log(user.stats);
-
   return (
     <Paper
       w='min(100%, 40rem)'

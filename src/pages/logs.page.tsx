@@ -33,8 +33,6 @@ export default function LogsPage() {
   });
   const { Component } = useStatus(status, { error, refetch });
 
-  console.log(data);
-
   return (
     <Container size='md'>
       <Stack>

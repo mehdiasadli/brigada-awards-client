@@ -1,18 +1,34 @@
-import { Button, Card, Center, SimpleGrid, Space, Stack, Text, Title } from '@mantine/core';
-import { TContest } from '../../types/models';
+import {
+  Badge,
+  Button,
+  Card,
+  Center,
+  Flex,
+  Paper,
+  SimpleGrid,
+  Space,
+  Stack,
+  Text,
+  Title,
+} from '@mantine/core';
 import UserPanel from './user-panel';
 import { useModal } from '../../hooks/useModal';
 import { Link } from 'react-router-dom';
 import CategoryCard from './category-card';
 import ContestHeader from './contest-header';
+import { TGetContestResponse } from '../../types/responses';
+import { formatNumber } from '../../utils/format-number';
+import { TUser } from '../../types/models';
+import { useUser } from '../../hooks/useUser';
 
 interface ContestProps {
-  contest: TContest | null;
+  contest: null | TGetContestResponse['body'];
   showResults?: boolean;
 }
 
 export default function Contest({ contest, showResults }: ContestProps) {
   const modal = useModal();
+  const { admin } = useUser();
 
   return contest === null ? (
     <Center>
@@ -39,6 +55,44 @@ export default function Contest({ contest, showResults }: ContestProps) {
           >
             SƏSVERMƏ
           </Button>
+        )}
+        {contest.givenTotals && contest.givenTotals.length > 0 && (
+          <Paper
+            mx='auto'
+            w='min(100%, 40rem)'
+            bg='pink.0'
+            px={30}
+            py={20}
+            sx={(theme) => ({ border: '1px solid ' + theme.colors.pink[3] })}
+          >
+            <Stack>
+              <Title c='pink.6' order={5} ta='center'>
+                Ən Çox Səs Verdiyiniz İstifadəçilər
+              </Title>
+              <Space h={5} />
+              {contest.givenTotals.map(({ total, user }) => (
+                <Flex align='center' justify='space-between'>
+                  <UserPanel link user={user} titleProps={{ c: 'pink.8' }} />
+
+                  {admin && (
+                    <Badge color='pink'>
+                      {total} /{' '}
+                      {formatNumber(
+                        (100 * total) /
+                          (
+                            contest.givenTotals as {
+                              total: number;
+                              user: TUser;
+                            }[]
+                          )?.reduce((sum, r) => sum + r.total, 0)
+                      )}
+                      %
+                    </Badge>
+                  )}
+                </Flex>
+              ))}
+            </Stack>
+          </Paper>
         )}
         <Card withBorder>
           <Title order={3} ta='center'>

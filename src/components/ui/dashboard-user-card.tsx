@@ -20,8 +20,8 @@ export default function DashboardUserCard({ user }: DashboardUserCardProps) {
       renderDelete={!user.admin}
       deleteModalTitle='İstifadəçini silirsiniz'
     >
-      <UserPanel withUsername user={user} />
-      <DashboardCardInfo count={user.participations.length}>
+      <UserPanel link withUsername user={user} />
+      <DashboardCardInfo count={user.participations.length} innerStackProps={{ gap: 5 }}>
         {user.participations.map((participation) => (
           <ContestChip contest={participation.contest} link />
         ))}

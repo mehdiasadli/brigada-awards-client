@@ -62,7 +62,7 @@ export type TCreateCommentResponse = SuccessResponse<TComment>;
 
 // CONTESTS
 export type TGetContestsResponse = SuccessResponse<TContest, true>;
-export type TGetContestResponse = SuccessResponse<TContest>;
+export type TGetContestResponse = SuccessResponse<TContest & { givenTotals?: { total: number; user: TUser }[] }>;
 export type TGetOngoingContestResponse = SuccessResponse<TContest | null>;
 export type TUpdateContestResponse = SuccessResponse<TContest>;
 export type TDeleteContestResponse = SuccessResponse<Id>;
